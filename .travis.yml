@@ -1,0 +1,13 @@
+language: golang
+golang:
+  - 1.12.5
+services:
+    - docker
+branchs:
+  only:
+    - master
+install:
+  - make image
+scripts:
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+  - make push
